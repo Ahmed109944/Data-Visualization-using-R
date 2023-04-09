@@ -1,0 +1,92 @@
+> Income <- read.csv("F:/4Th Second Term/Big Data/Task-Individual/Data Sets/Income.csv")
+> View(Income)
+> ######Plot 1#######
+> plot(Income$Education_Level,Income$Salary, xlab = "Education_level", ylab = "Salary" ,main = "Relation between Education and Salary")
+> 
+> ######Plot 2#######
+> hist(Income$Department, col = "lightblue", xlab = "Department Number", main = "Frequency of each Department")
+> 
+> ######Plot 3#######
+> 
+> plot(Income$Age, xlim=c(0, 200), main="Ages of Employees", xlab="Years" ,pch="*", col="blue", cex=2)
+> 
+> ######Plot 4#######
+> 
+> maxsalperday<-aggregate(Income[,11],list(Income$Department),max)
+> barplot(maxsalperday$x,names.arg = maxsalperday$Group.1,main = "The maximun Salary Grouped Per Department")
+> 
+> ######Plot 5#######
+> 
+> count<-table(Income$Education_Level)
+> barplot(count,main = "barPlot Off Education_Level")
+> 
+> ######Plot 6#######
+> 
+> slices <- table(Income$Gender)
+> lbls <- c("Female","Male")
+> pct <- slices/sum(slices)*100
+> lbls<-paste(lbls," = [",pct," % ]",sep = "")
+> pie(slices, labels = lbls, main="Pie Chart of Gender" ,col= rainbow (length(lbls)))
+> 
+> ######Plot 7 Part 1#######
+> 
+> hist(Income$Region_Num,probability = TRUE,col = "grey", xlab = "Region_Num",main = "Region_Number distribution")
+> lines(density(Income$Region_Num),col="red",lwd=2)
+> lines(density(Income$Region_Num,adjust=2),col="blue",lwd=2)
+> 
+> ######Plot 7 Part 2#######
+> 
+> val<-table(Income$Martial)
+> plot(density(val),col = "black", xlab = "Martial" ,main = "Matrial Status distribution")
+> lines(density(val), col="red", lwd=3)
+> lines(density(val, adjust=2), lty="dotted", col="blue", lwd=3)
+> 
+> ######Plot 8#######
+> 
+> dotchart(Income$Salary,groups = Income$Age,labels = row.names(Income), cex =1.2, main = "Salaries per ages", xlab= "Salary in $")
+> 
+> ######Plot 9#######
+> 
+> plot(Income[-c(1,3,4,5,6,9,11)])
+> 
+> colors<-c("red","green","blue")
+> pairs(Income[-c(1,3,4,5,6,9,11)],pch=21,bg=colors[unclass(Income$Statu)])
+> par(xpd=TRUE)
+> legend(0.025,0.025,horiz = TRUE,as.vector(unique(Income$Statu)),fill = colors,bty = "n")
+> 
+> ######Plot 10 #######
+> 
+> par(mfcol=c(3,3))
+> 
+> 
+> plot(Income$Education_Level,Income$Salary, xlab = "Education_level", ylab = "Salary" ,main = "Relation between Education and Salary")
+> hist(Income$Department, col = "lightblue", xlab = "Department Number", main = "Frequency of each Department")
+> plot(Income$Age, xlim=c(0, 200), main="Ages of Employees", xlab="Years" ,pch="*", col="blue", cex=2)
+> 
+> maxsalperday<-aggregate(Income[,11],list(Income$Department),max)
+> barplot(maxsalperday$x,names.arg = maxsalperday$Group.1,main = "The maximun Salary Grouped Per Department")
+> 
+> count<-table(Income$Education_Level)
+> barplot(count,main = "barPlot Off Education_Level")
+> 
+> 
+> slices <- table(Income$Gender)
+> lbls <- c("Female","Male")
+> pct <- slices/sum(slices)*100
+> lbls<-paste(lbls," = [",pct," % ]",sep = "")
+> pie(slices, labels = lbls, main="Pie Chart of Gender" ,col= rainbow (length(lbls)))
+> 
+> 
+> hist(Income$Region_Num,probability = TRUE,col = "grey", xlab = "Region_Num",main = "Region_Number distribution")
+> lines(density(Income$Region_Num),col="red",lwd=2)
+> lines(density(Income$Region_Num,adjust=2),col="blue",lwd=2)
+> 
+> val<-table(Income$Martial)
+> plot(density(val),col = "black", xlab = "Martial" ,main = "Matrial Status distribution")
+> lines(density(val), col="red", lwd=3)
+> lines(density(val, adjust=2), lty="dotted", col="blue", lwd=3)
+> 
+> 
+> dotchart(Income$Salary,groups = Income$Age,labels = row.names(Income), cex =1.2, main = "Salaries per ages", xlab= "Salary in $")
+> ################################################## The End ######################################################
+> 
